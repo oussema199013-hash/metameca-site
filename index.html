@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metameca Maison</title>
+<link rel="icon" href="logo.png">
+<meta name="description" content="Metameca : meubles et objets pour la maison en acier et bois, fabriqués à Msaken (Sousse). Tables, étagères, luminaires, rangements. Commande sur WhatsApp au 94 703 066.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Couleurs du logo MMI : bleu engrenage, gris anthracite, acier */
+  --brand:#0A7FCB;
+  --brand-dark:#07639F;
+  --ink:#25282D;
+  --muted:#6B7378;
+  --bg:#F6F5F2;
+  --card:#FFFFFF;
+  --line:#E4E2DD;
+  --wood:#B98557;
+  --soft-1:#EDE6DC; --soft-2:#E3E8EA; --soft-3:#EAE3E9; --soft-4:#E5EADF;
+  --display:"Outfit",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* Boutique : bandeau promo, en-tête + panier WhatsApp, héros scène de salon, pièces, catalogue, sur mesure, commande en 3 étapes */
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;text-wrap:balance;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-family:var(--display);font-weight:600;font-size:16px;padding:13px 22px;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:background .15s,color .15s,transform .15s,border-color .15s}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.b{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.b:hover{background:var(--brand-dark);border-color:var(--brand-dark)}
+.btn.w{background:#fff;border-color:#fff;color:var(--ink)}
+.btn.w:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.sm{font-size:14px;padding:9px 14px}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+
+/* Bandeau promo */
+.promo{background:var(--ink);color:#fff;font-size:14px;text-align:center;padding:9px 16px}
+.promo b{color:#8FD0FA}
+.promo a{text-decoration:underline}
+
+/* En-tête */
+.head{background:var(--card);position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line)}
+.head .wrap{display:flex;align-items:center;gap:20px;min-height:74px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.logo .mark{width:42px;height:42px;border-radius:10px;background:var(--brand);display:grid;place-items:center}
+.logo .mark svg{width:26px;height:26px}
+.logo b{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:.02em;line-height:1}
+.logo small{display:block;font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:3px}
+.nav{display:flex;gap:4px;margin-left:12px}
+.nav a{text-decoration:none;font-weight:500;padding:8px 12px;border-radius:999px;font-size:15px}
+.nav a:hover{background:var(--bg)}
+.search{flex:1;display:flex;align-items:center;background:var(--bg);border-radius:999px;padding:0 6px 0 16px;max-width:340px;margin-left:auto}
+.search input{border:0;background:transparent;font:inherit;padding:11px 6px;width:100%}
+.search input:focus{outline:none}
+.search button{border:0;background:var(--ink);color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.cart-btn{position:relative;flex:none;border:0;background:var(--brand);color:#fff;border-radius:999px;padding:10px 16px;font-family:var(--display);font-weight:600;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.cart-btn .n{background:#fff;color:var(--brand);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:13px;padding:0 6px}
+@media (max-width:1020px){.nav{display:none}}
+@media (max-width:640px){.search{display:none}.cart-btn .t{display:none}.logo small{display:none}.head .wrap{justify-content:space-between}}
+
+/* Héros */
+.hero{padding:clamp(20px,3vw,32px) 0 0}
+.hero-card{background:linear-gradient(135deg,#2B2E33,#3A3E44);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1.1fr;color:#fff;min-height:clamp(420px,46vw,560px)}
+@media (max-width:900px){.hero-card{grid-template-columns:1fr}}
+.hero-txt{padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;justify-content:center;gap:20px}
+.hero h1{font-size:clamp(40px,5.6vw,72px);font-weight:800}
+.hero h1 em{font-style:normal;color:#8FD0FA}
+.hero p{color:#C9CED1;font-size:18px;margin:0;max-width:44ch}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .facts{display:flex;gap:26px;flex-wrap:wrap;margin-top:8px}
+.hero .facts div{font-size:14px;color:#AEB5B9}
+.hero .facts b{display:block;font-family:var(--display);font-size:24px;color:#fff}
+.scene{position:relative;min-height:320px}
+.scene svg{position:absolute;inset:0;width:100%;height:100%}
+.float-tag{position:absolute;background:#fff;color:var(--ink);border-radius:14px;padding:10px 14px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:flex;gap:10px;align-items:center}
+.float-tag b{font-family:var(--display);display:block;font-size:15px}
+.float-tag i{width:10px;height:10px;border-radius:50%;background:var(--brand);flex:none;box-shadow:0 0 0 5px rgba(10,127,203,.2)}
+.ft1{left:8%;top:12%}.ft2{right:6%;bottom:14%}
+@media (max-width:900px){.scene{min-height:300px;order:-1}}
+
+/* Bande d'avantages */
+.perks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+@media (max-width:900px){.perks{grid-template-columns:1fr 1fr}}
+.perk{background:var(--card);border-radius:18px;padding:16px 18px;display:flex;gap:12px;align-items:center}
+.perk svg{width:36px;height:36px;flex:none}
+.perk b{font-family:var(--display);display:block;font-size:16px}
+.perk span{font-size:13.5px;color:var(--muted)}
+
+section{padding:clamp(52px,7vw,88px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+.sec-head h2{font-size:clamp(30px,4vw,46px);font-weight:700}
+.sec-head p{margin:6px 0 0;color:var(--muted);max-width:52ch}
+
+/* Pièces */
+.rooms{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media (max-width:1000px){.rooms{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.rooms{grid-template-columns:repeat(2,1fr)}}
+.room{border:0;cursor:pointer;text-align:left;border-radius:22px;padding:0;overflow:hidden;background:var(--card);font:inherit;color:inherit;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.room:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(29,33,36,.12)}
+.room .pic{aspect-ratio:1/1;display:grid;place-items:center}
+.room .pic svg{width:64%;height:auto}
+.room .t{padding:12px 16px 16px}
+.room b{font-family:var(--display);font-size:18px;display:block}
+.room span{font-size:13.5px;color:var(--muted)}
+
+/* Catalogue */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filters button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:9px 16px;font:inherit;font-weight:500;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+.card{background:var(--card);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:0 16px 34px rgba(29,33,36,.12);transform:translateY(-3px)}
+.card .pic{position:relative;aspect-ratio:1/1;display:grid;place-items:center}
+.card .pic img{width:100%;height:100%;object-fit:cover}
+.real{position:absolute;right:12px;top:12px;background:rgba(255,255,255,.92);color:var(--ink);border-radius:999px;font-size:11.5px;font-weight:700;padding:4px 10px}
+.card .pic svg{width:70%;height:auto;filter:drop-shadow(0 10px 8px rgba(29,33,36,.14))}
+.badge{position:absolute;left:12px;top:12px;background:var(--ink);color:#fff;border-radius:999px;font-size:12px;font-weight:700;padding:4px 10px}
+.badge.new{background:var(--brand)}
+.card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card .cat{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.card h3{font-size:18px;font-weight:600}
+.card p{margin:0;color:var(--muted);font-size:14px;flex:1}
+.card .foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;flex-wrap:wrap}
+.price{font-family:var(--display);font-weight:700;font-size:18px}
+.price small{display:block;font-family:var(--body);font-weight:400;font-size:12px;color:var(--muted)}
+.add{border:0;background:var(--brand);color:#fff;border-radius:999px;padding:9px 14px;font-family:var(--display);font-weight:600;font-size:14px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.add:hover{background:var(--brand-dark)}
+.add.in{background:var(--ink)}
+.empty{grid-column:1/-1;background:var(--card);border-radius:22px;padding:32px;text-align:center;color:var(--muted)}
+
+/* Réalisations */
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:240px 240px;gap:12px}
+.gal figure{margin:0;position:relative;border-radius:22px;overflow:hidden;background:#ddd}
+.gal figure:first-child{grid-row:1/3}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.94);border-radius:999px;padding:6px 14px;font-family:var(--display);font-weight:600;font-size:14px}
+@media (max-width:760px){.gal{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gal figure{aspect-ratio:1}.gal figure:first-child{grid-row:auto;grid-column:1/3;aspect-ratio:16/10}}
+
+/* Sur mesure */
+.custom{background:var(--brand);border-radius:28px;color:#fff;display:grid;grid-template-columns:1.2fr .8fr;overflow:hidden}
+@media (max-width:860px){.custom{grid-template-columns:1fr}}
+.custom .t{padding:clamp(30px,5vw,56px);display:flex;flex-direction:column;gap:16px}
+.custom h2{font-size:clamp(32px,4.4vw,52px);font-weight:800}
+.custom p{margin:0;color:#DCEFFC;max-width:48ch;font-size:17px}
+.custom ul{margin:0;padding:0;list-style:none;display:flex;gap:10px;flex-wrap:wrap}
+.custom li{background:rgba(255,255,255,.16);border-radius:999px;padding:6px 14px;font-size:14px}
+.custom .art{background:rgba(0,0,0,.12);display:grid;place-items:center;padding:24px;min-height:240px}
+.custom .art svg{width:min(90%,340px);height:auto}
+
+/* Commande en 3 étapes */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:860px){.how{grid-template-columns:1fr}}
+.how div{background:var(--card);border-radius:22px;padding:24px}
+.how .n{width:42px;height:42px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:18px;margin-bottom:14px}
+.how b{font-family:var(--display);font-size:20px;display:block;margin-bottom:4px}
+.how p{margin:0;color:var(--muted)}
+
+/* Réseaux + contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+.panel{background:var(--card);border-radius:28px;padding:clamp(24px,4vw,40px)}
+.panel.dark{background:var(--ink);color:#fff}
+.panel h2{font-size:clamp(28px,3.6vw,40px);font-weight:700;margin-bottom:10px}
+.panel p{color:var(--muted);margin:0 0 18px}
+.panel.dark p{color:#B9C0C4}
+.big{font-family:var(--display);font-weight:800;font-size:clamp(30px,4vw,44px);text-decoration:none;display:block;margin:4px 0 16px}
+.info{display:grid;gap:8px;font-size:15px;color:#C9CED1;margin-bottom:22px}
+
+footer{background:var(--ink);color:#AEB5B9;padding:36px 0;margin-top:clamp(52px,7vw,88px);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer b{color:#fff;font-family:var(--display)}
+
+/* Panier */
+.drawer-bg{position:fixed;inset:0;background:rgba(29,33,36,.45);z-index:50;display:none}
+.drawer-bg.on{display:block}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--card);z-index:51;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.drawer header h3{font-size:22px}
+.x{border:0;background:var(--bg);width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer}
+.items{flex:1;overflow:auto;padding:12px 20px;display:grid;gap:10px;align-content:start}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:10px}
+.item .th{width:56px;height:56px;border-radius:12px;display:grid;place-items:center}
+.item .th img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.item .th svg{width:80%;height:auto}
+.item b{font-family:var(--display);font-size:15px;display:block;line-height:1.2}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-size:16px}
+.drawer footer{margin:0;background:none;color:inherit;padding:16px 20px;border-top:1px solid var(--line);display:grid;gap:10px}
+.drawer label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+.drawer input,.drawer textarea{font:inherit;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
+.drawer textarea{min-height:64px;resize:vertical}
+.hint{font-size:12.5px;color:var(--muted);margin:0}
+.send-link{display:none;font-size:13px;word-break:break-all}
+.send-link.on{display:block}
+
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,120px);background:var(--ink);color:#fff;border-radius:999px;padding:12px 20px;font-size:14px;z-index:60;transition:transform .25s}
+.toast.on{transform:translate(-50%,0)}
+.wa{position:fixed;right:16px;bottom:16px;z-index:40;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.wa svg{width:30px;height:30px}
+</style>
+</head>
+<body>
+
+<!-- Dégradés partagés par toutes les illustrations -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="wood" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#D3A273"/><stop offset=".5" stop-color="#B98557"/><stop offset="1" stop-color="#9A6A40"/></linearGradient>
+    <linearGradient id="walnut" x1="0" x2="1"><stop offset="0" stop-color="#8A5A36"/><stop offset="1" stop-color="#6B4126"/></linearGradient>
+    <linearGradient id="steel" x1="0" x2="1"><stop offset="0" stop-color="#2B3034"/><stop offset=".5" stop-color="#4A5258"/><stop offset="1" stop-color="#1E2225"/></linearGradient>
+    <linearGradient id="glass" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#E9F1F4"/><stop offset="1" stop-color="#B9CBD3"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFE3A3" stop-opacity=".9"/><stop offset="1" stop-color="#FFE3A3" stop-opacity="0"/></radialGradient>
+  </defs>
+</svg>
+
+<div class="promo">Fabrication artisanale à Msaken · <b>Commande et devis sur WhatsApp</b> au <a href="tel:+21694703066">94 703 066</a></div>
+
+<header class="head">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Metameca, accueil">
+      <img src="logo.png" alt="" width="62" height="49" style="width:62px;height:auto"><span><b>METAMECA</b><small>Méta Méca Industrie</small></span>
+    </a>
+    <nav class="nav" aria-label="Menu">
+      <a href="#boutique">Boutique</a>
+      <a href="#pieces">Par pièce</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#sur-mesure">Sur mesure</a>
+      <a href="#commander">Commander</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <form class="search" id="search" role="search">
+      <label for="q" style="position:absolute;left:-9999px">Rechercher un article</label>
+      <input id="q" placeholder="Table, étagère, lampe…">
+      <button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M15 15l6 6"/></svg></button>
+    </form>
+    <button class="cart-btn" type="button" id="open-cart" aria-label="Ouvrir ma commande">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 4h2l2.4 11h11L21 7H6.2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+      <span class="t">Ma commande</span><span class="n" id="count">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="hero-txt">
+          <span class="eyebrow" style="color:#8FD0FA">Nouvelle collection maison</span>
+          <h1>Des meubles en <em>acier &amp; bois</em> qui durent toute une vie</h1>
+          <p>Tables, étagères, luminaires et rangements fabriqués à la main dans notre atelier de Msaken. Choisissez, commandez sur WhatsApp, on s'occupe du reste.</p>
+          <div class="cta">
+            <a class="btn b" href="#boutique">Découvrir la boutique</a>
+            <a class="btn w" href="#sur-mesure">Sur mesure</a>
+          </div>
+          <div class="facts">
+            <div><b>100 %</b>fabriqué à Msaken</div>
+            <div><b>Sur mesure</b>dimensions au choix</div>
+            <div><b>Acier + bois</b>massif</div>
+          </div>
+        </div>
+        <div class="scene" >
+          <img src="img/salon.jpg" alt="Salon avec une table basse loft Metameca en acier et bois" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:45% 70%">
+          <div class="float-tag ft1"><i></i><div><b>Table basse loft</b>Acier noir + bois</div></div>
+          <div class="float-tag ft2"><i></i><div><b>Photo réelle</b>Fabriquée dans notre atelier</div></div>
+        </div>
+      </div>
+
+      <div class="perks">
+        <div class="perk"><svg viewBox="0 0 36 36" fill="none" stroke="#1D2124" stroke-width="2.2" aria-hidden="true"><path d="M5 30V14L18 5l13 9v16Z"/><path d="M14 30v-9h8v9" stroke="var(--brand)"/></svg><div><b>Fait main en Tunisie</b><span>Atelier à Msaken, Sousse</span></div></div>
+        <div class="perk"><svg viewBox="0 0 36 36" fill="none" stroke="#1D2124" stroke-width="2.2" aria-hidden="true"><rect x="5" y="5" width="26" height="26" rx="4"/><path d="M5 14h26M14 5v26" stroke-width="1.4"/><path d="M19 24l5-5" stroke="var(--brand)"/></svg><div><b>Sur mesure</b><span>Taille et couleur au choix</span></div></div>
+        <div class="perk"><svg viewBox="0 0 36 36" fill="none" stroke="#1D2124" stroke-width="2.2" aria-hidden="true"><path d="M18 4l12 5v9c0 7-5 12-12 14C11 30 6 25 6 18V9Z"/><path d="M12 18l4 4 8-8" stroke="var(--brand)"/></svg><div><b>Acier traité</b><span>Peinture résistante et durable</span></div></div>
+        <div class="perk"><svg viewBox="0 0 36 36" fill="none" stroke="#1D2124" stroke-width="2.2" aria-hidden="true"><path d="M6 6h8l2 7-4 2c2 4 4 6 8 8l2-4 7 2v8C15 29 6 20 6 6Z"/></svg><div><b>Commande facile</b><span>Sur WhatsApp, réponse rapide</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="pieces">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Inspirations</span><h2>Meublez chaque pièce</h2></div><p>Choisissez une pièce de la maison pour voir les articles qui lui vont.</p></div>
+      <div class="rooms" id="rooms"></div>
+    </div>
+  </section>
+
+  <section id="boutique" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Boutique</span><h2>Nos articles</h2></div><p>Ajoutez vos articles à « Ma commande », puis envoyez-la sur WhatsApp. Chaque pièce est fabriquée pour vous.</p></div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrer par catégorie"></div>
+      <div class="grid" id="grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="realisations" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Photos réelles</span><h2>Nos réalisations</h2></div><p>Des meubles sortis de notre atelier de Msaken et livrés chez nos clients.</p></div>
+      <div class="gal">
+        <figure><img src="img/salon.jpg" alt="Table basse loft dans un salon" loading="lazy" style="object-position:45% 70%"><figcaption>Table basse loft</figcaption></figure>
+        <figure><img src="img/chambre-sq.jpg" alt="Armoire de chambre avec miroir sculpté" loading="lazy"><figcaption>Chambre à coucher</figcaption></figure>
+        <figure><img src="img/armoire-sq.jpg" alt="Armoire 3 portes" loading="lazy"><figcaption>Armoire 3 portes</figcaption></figure>
+        <figure><img src="img/dressing-sq.jpg" alt="Dressing et bibliothèque en bois" loading="lazy"><figcaption>Dressing</figcaption></figure>
+        <figure><img src="img/tablebasse-sq.jpg" alt="Table basse en finition atelier" loading="lazy"><figcaption>À la sortie de l'atelier</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="sur-mesure" style="padding-top:0">
+    <div class="wrap">
+      <div class="custom">
+        <div class="t">
+          <span class="eyebrow" style="color:#CDE8FB">Sur mesure</span>
+          <h2>Votre meuble, à vos dimensions</h2>
+          <p>Une niche à habiller, une table pour 10 personnes, une couleur précise ? Envoyez-nous une photo ou vos mesures : nous dessinons le plan, vous validez, nous fabriquons.</p>
+          <ul><li>Dimensions libres</li><li>Couleur au choix</li><li>Chêne, noyer ou pin</li><li>Plan validé avant fabrication</li></ul>
+          <div><a class="btn w" target="_blank" rel="noopener" href="https://wa.me/21694703066?text=Bonjour%20Metameca%2C%20je%20voudrais%20un%20meuble%20sur%20mesure%20%3A%20">Demander un devis sur mesure</a></div>
+        </div>
+        <div class="art">
+          <svg viewBox="0 0 340 260" fill="none" aria-hidden="true">
+            <rect x="40" y="60" width="260" height="16" rx="3" fill="url(#wood)"/>
+            <path d="M60 76 L80 220 M280 76 L260 220 M70 150 H270" stroke="#1D2124" stroke-width="8" stroke-linecap="round"/>
+            <g stroke="#fff" stroke-width="1.6"><path d="M40 40 V30 M300 40 V30 M40 35 H300"/><path d="M318 60 H328 M318 220 H328 M323 60 V220"/></g>
+            <g fill="#fff" font-family="DM Sans, sans-serif" font-size="14" font-weight="700"><text x="170" y="24" text-anchor="middle">L = votre mesure</text><text x="312" y="146" text-anchor="end" transform="rotate(-90 312 146)">H</text></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="commander" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Simple et rapide</span><h2>Commander en 3 étapes</h2></div></div>
+      <div class="how">
+        <div><span class="n">1</span><b>Choisissez</b><p>Ajoutez vos articles à « Ma commande » ou décrivez votre projet sur mesure.</p></div>
+        <div><span class="n">2</span><b>Envoyez sur WhatsApp</b><p>Votre liste part en un clic au 94 703 066. Nous confirmons le prix, la couleur et le délai.</p></div>
+        <div><span class="n">3</span><b>Recevez</b><p>Votre meuble est fabriqué dans notre atelier, puis livré ou retiré à Msaken.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact">
+        <div class="panel dark">
+          <span class="eyebrow" style="color:#8FD0FA">Contact</span>
+          <h2 style="margin-top:8px">Une question ? Appelez-nous</h2>
+          <a class="big" href="tel:+21694703066">+216 94 703 066</a>
+          <div class="info"><span>Téléphone et WhatsApp</span><span>Atelier : Msaken, Sousse, Tunisie</span><span>STE Méta Méca Industrie</span></div>
+          <a class="btn b" target="_blank" rel="noopener" href="https://wa.me/21694703066">Écrire sur WhatsApp</a>
+        </div>
+        <div class="panel">
+          <span class="eyebrow">Facebook · Metameca Industrie</span>
+          <h2 style="margin-top:8px">Suivez nos nouveautés</h2>
+          <p>Chaque jour, un nouvel article sorti de l'atelier. Suivez notre page pour voir les nouveautés avant tout le monde.</p>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.facebook.com/search/top?q=Metameca%20Industrie">Voir la page Facebook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span style="display:flex;align-items:center;gap:12px"><img src="logo.png" alt="Logo STE Méta Méca Industrie" width="70" style="width:70px;height:auto;background:#fff;border-radius:10px;padding:6px"><span><b>METAMECA</b> · Meubles en acier et bois, fabriqués à Msaken</span></span>
+    <span>© 2026 STE Méta Méca Industrie · 94 703 066</span>
+  </div>
+</footer>
+
+<div class="drawer-bg" id="bg"></div>
+<aside class="drawer" id="drawer" aria-label="Ma commande" aria-hidden="true">
+  <header><h3>Ma commande</h3><button class="x" type="button" id="close-cart" aria-label="Fermer">×</button></header>
+  <div class="items" id="items"></div>
+  <footer>
+    <label for="c-nom">Votre nom<input id="c-nom" autocomplete="name"></label>
+    <label for="c-ville">Ville de livraison<input id="c-ville" autocomplete="address-level2"></label>
+    <label for="c-note">Précisions (dimensions, couleur…)<textarea id="c-note"></textarea></label>
+    <button class="btn b" type="button" id="send">Envoyer ma commande sur WhatsApp</button>
+    <p class="hint" id="hint">Votre liste s'ouvre dans WhatsApp, prête à être envoyée au 94 703 066. Nous vous confirmons le prix et le délai.</p>
+    <a class="send-link" id="send-link" href="#" target="_blank" rel="noopener">Ouvrir WhatsApp</a>
+  </footer>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<a class="wa" href="https://wa.me/21694703066" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp au 94 703 066">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.7 1.2 3.2 1.3 3.4 2.3 3.5 5.6 4.9c2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.3z"/></svg>
+</a>
+
+<script>
+(function(){
+  var S='#1E2225';
+  var A={
+    coffee:'<svg viewBox="0 0 200 160"><rect x="20" y="58" width="160" height="14" rx="4" fill="url(#wood)"/><path d="M34 72 V136 H166 V72" fill="none" stroke="'+S+'" stroke-width="6"/><rect x="34" y="104" width="132" height="8" rx="2" fill="url(#wood)"/></svg>',
+    cside:'<svg viewBox="0 0 200 160"><ellipse cx="96" cy="40" rx="62" ry="15" fill="url(#walnut)"/><path d="M140 46 V140 H60" fill="none" stroke="'+S+'" stroke-width="8" stroke-linejoin="round"/><path d="M140 140 H150" stroke="'+S+'" stroke-width="8"/></svg>',
+    tv:'<svg viewBox="0 0 200 160"><rect x="16" y="64" width="168" height="56" rx="4" fill="url(#wood)"/><path d="M16 92 H184 M72 64 V120 M128 64 V120" stroke="#8C5E36" stroke-width="2"/><path d="M26 120 V144 M174 120 V144" stroke="'+S+'" stroke-width="6"/><rect x="16" y="60" width="168" height="6" fill="'+S+'"/></svg>',
+    floorlamp:'<svg viewBox="0 0 200 160"><circle cx="100" cy="26" r="26" fill="url(#glow)"/><path d="M100 22 V150" stroke="'+S+'" stroke-width="5"/><path d="M82 8 H118 L110 30 H90 Z" fill="'+S+'"/><rect x="72" y="92" width="56" height="7" rx="2" fill="url(#wood)"/><ellipse cx="100" cy="152" rx="24" ry="5" fill="'+S+'"/></svg>',
+    magazine:'<svg viewBox="0 0 200 160"><path d="M60 40 L70 140 H130 L140 40" fill="none" stroke="'+S+'" stroke-width="6" stroke-linejoin="round"/><rect x="82" y="56" width="14" height="70" fill="#0A7FCB" transform="rotate(-8 89 91)"/><rect x="100" y="52" width="12" height="74" fill="#F1EDE6" stroke="#ccc"/></svg>',
+    dining:'<svg viewBox="0 0 200 160"><rect x="10" y="48" width="180" height="14" rx="3" fill="url(#wood)"/><path d="M24 62 L40 146 M176 62 L160 146 M32 110 H168" stroke="'+S+'" stroke-width="6" fill="none"/></svg>',
+    chair:'<svg viewBox="0 0 200 160"><path d="M72 10 V150 M128 84 V150 M72 84 H130" stroke="'+S+'" stroke-width="6" fill="none"/><rect x="68" y="78" width="66" height="10" rx="3" fill="url(#wood)"/><rect x="72" y="18" width="44" height="30" rx="3" fill="url(#wood)"/></svg>',
+    bench:'<svg viewBox="0 0 200 160"><rect x="12" y="70" width="176" height="14" rx="3" fill="url(#wood)"/><path d="M26 84 V140 H56 V84 M144 84 V140 H174 V84" stroke="'+S+'" stroke-width="6" fill="none"/></svg>',
+    console:'<svg viewBox="0 0 200 160"><rect x="24" y="36" width="152" height="10" rx="2" fill="url(#wood)"/><path d="M34 46 V148 M166 46 V148" stroke="'+S+'" stroke-width="6"/><rect x="34" y="104" width="132" height="8" rx="2" fill="url(#wood)"/><rect x="60" y="22" width="20" height="14" fill="#7F9A6B"/></svg>',
+    stool:'<svg viewBox="0 0 200 160"><ellipse cx="100" cy="22" rx="34" ry="9" fill="url(#wood)"/><path d="M74 28 L60 150 M126 28 L140 150 M66 104 H134" stroke="'+S+'" stroke-width="6" fill="none"/></svg>',
+    shelf:'<svg viewBox="0 0 200 160"><path d="M44 6 V154 M156 6 V154" stroke="'+S+'" stroke-width="6"/><g fill="url(#wood)"><rect x="44" y="22" width="112" height="8"/><rect x="44" y="66" width="112" height="8"/><rect x="44" y="110" width="112" height="8"/></g><path d="M44 30 L156 66 M156 74 L44 110" stroke="'+S+'" stroke-width="2"/><rect x="60" y="48" width="14" height="18" fill="#0A7FCB"/><rect x="120" y="92" width="22" height="18" fill="#A7B39A"/></svg>',
+    wallshelf:'<svg viewBox="0 0 200 160"><g fill="url(#wood)"><rect x="30" y="44" width="140" height="10" rx="2"/><rect x="30" y="104" width="140" height="10" rx="2"/></g><path d="M44 54 V74 H64 M156 54 V74 H136 M44 114 V134 H64 M156 114 V134 H136" stroke="'+S+'" stroke-width="5" fill="none"/><rect x="60" y="20" width="16" height="24" fill="#F1EDE6" stroke="#ccc"/><path d="M128 44 C120 30 128 20 136 28" stroke="#6E8B5B" stroke-width="4" fill="none"/></svg>',
+    coat:'<svg viewBox="0 0 200 160"><path d="M100 10 V150 M72 150 H128" stroke="'+S+'" stroke-width="6"/><path d="M100 26 L74 40 M100 26 L126 40 M100 48 L80 58 M100 48 L120 58" stroke="'+S+'" stroke-width="4"/><path d="M72 40 C64 64 70 100 88 104 V44 Z" fill="#B65E3A"/></svg>',
+    mirror:'<svg viewBox="0 0 200 160"><rect x="58" y="8" width="84" height="144" rx="42" fill="url(#glass)" stroke="'+S+'" stroke-width="6"/><path d="M80 40 L104 24 M80 60 L120 34" stroke="#fff" stroke-width="4" opacity=".7"/></svg>',
+    plant:'<svg viewBox="0 0 200 160"><path d="M60 70 H140 M60 70 L70 150 M140 70 L130 150 M64 116 H136" stroke="'+S+'" stroke-width="5" fill="none"/><path d="M84 70 L88 40 H112 L116 70" fill="#C6A57F"/><path d="M100 40 C80 10 70 8 60 4 M100 40 C110 10 130 4 140 2 M100 40 V6" stroke="#6E8B5B" stroke-width="5" fill="none" stroke-linecap="round"/></svg>',
+    bottle:'<svg viewBox="0 0 200 160"><rect x="44" y="16" width="112" height="132" fill="none" stroke="'+S+'" stroke-width="6"/><path d="M44 60 H156 M44 104 H156 M81 16 V148 M119 16 V148" stroke="'+S+'" stroke-width="3"/><g fill="#6B2332"><circle cx="62" cy="38" r="9"/><circle cx="100" cy="82" r="9"/><circle cx="138" cy="126" r="9"/><circle cx="138" cy="38" r="9"/></g></svg>',
+    pendant:'<svg viewBox="0 0 200 160"><path d="M100 0 V40" stroke="'+S+'" stroke-width="3"/><circle cx="100" cy="100" r="40" fill="url(#glow)"/><path d="M70 44 H130 L140 100 H60 Z" fill="none" stroke="'+S+'" stroke-width="5" stroke-linejoin="round"/><path d="M86 44 L80 100 M114 44 L120 100 M100 44 V100" stroke="'+S+'" stroke-width="3"/><circle cx="100" cy="92" r="8" fill="#FFD27A"/></svg>',
+    globe:'<svg viewBox="0 0 200 160"><path d="M100 0 V30" stroke="'+S+'" stroke-width="3"/><circle cx="100" cy="88" r="56" fill="url(#glow)"/><circle cx="100" cy="88" r="52" fill="none" stroke="'+S+'" stroke-width="5"/><ellipse cx="100" cy="88" rx="52" ry="16" fill="none" stroke="'+S+'" stroke-width="3"/><ellipse cx="100" cy="88" rx="18" ry="52" fill="none" stroke="'+S+'" stroke-width="3"/><circle cx="100" cy="88" r="8" fill="#FFD27A"/></svg>',
+    sconce:'<svg viewBox="0 0 200 160"><rect x="54" y="40" width="10" height="80" rx="3" fill="'+S+'"/><path d="M64 80 H110" stroke="'+S+'" stroke-width="5"/><circle cx="128" cy="96" r="34" fill="url(#glow)"/><path d="M108 66 H148 L140 96 H116 Z" fill="'+S+'"/><circle cx="128" cy="104" r="7" fill="#FFD27A"/></svg>',
+    desk:'<svg viewBox="0 0 200 160"><rect x="14" y="54" width="172" height="12" rx="3" fill="url(#wood)"/><path d="M26 66 V146 H62 V66 M174 66 V146" stroke="'+S+'" stroke-width="6" fill="none"/><rect x="26" y="86" width="36" height="20" fill="url(#wood)"/><rect x="110" y="26" width="46" height="28" rx="3" fill="#2B3034"/></svg>',
+    bed:'<svg viewBox="0 0 200 160"><rect x="20" y="40" width="20" height="100" fill="'+S+'"/><rect x="40" y="86" width="150" height="26" rx="6" fill="#ECE7E0"/><rect x="40" y="104" width="150" height="10" fill="url(#wood)"/><path d="M40 114 V140 M186 114 V140" stroke="'+S+'" stroke-width="6"/><rect x="46" y="72" width="40" height="16" rx="6" fill="#fff" stroke="#ddd"/><path d="M20 60 H40 M20 80 H40" stroke="#4A5258" stroke-width="2"/></svg>',
+    door:'<svg viewBox="0 0 200 160"><rect x="60" y="4" width="80" height="152" fill="url(#walnut)" stroke="'+S+'" stroke-width="6"/><path d="M60 54 H140 M60 104 H140" stroke="#5A3820" stroke-width="2"/><rect x="122" y="76" width="6" height="22" rx="2" fill="#C9CED1"/></svg>',
+    rail:'<svg viewBox="0 0 200 160"><path d="M10 40 H190 M10 140 H190 M16 40 V140 M184 40 V140" stroke="'+S+'" stroke-width="6" fill="none"/><path d="M48 40 V140 M80 40 V140 M112 40 V140 M144 40 V140" stroke="'+S+'" stroke-width="3"/><rect x="8" y="32" width="184" height="10" rx="3" fill="url(#wood)"/></svg>',
+    gate:'<svg viewBox="0 0 200 160"><path d="M10 152 V24 H190 V152 M100 24 V152" stroke="'+S+'" stroke-width="6" fill="none"/><path d="M30 24 V152 M50 24 V152 M70 24 V152 M130 24 V152 M150 24 V152 M170 24 V152" stroke="'+S+'" stroke-width="3"/><rect x="10" y="70" width="180" height="22" fill="url(#wood)"/></svg>'
+  };
+  var tints=['var(--soft-1)','var(--soft-2)','var(--soft-3)','var(--soft-4)'];
+  // prix: mettez un nombre (en DT) pour l'afficher, sinon "Prix sur WhatsApp"
+  var FALLBACK=[
+    {id:1,n:"Table basse loft",c:"Salon",a:"coffee",img:"img/salon-sq.jpg",d:"Cadre acier noir, plateau et tablette effet bois. Notre modèle phare.",b:"Best-seller",prix:null},
+    {id:2,n:"Bout de canapé en C",c:"Salon",a:"cside",d:"Plateau ovale noyer, pied en C qui glisse sous le canapé.",b:"Nouveau",prix:null},
+    {id:3,n:"Lampadaire étagère",c:"Luminaires",a:"floorlamp",d:"Pied acier noir avec tablette en bois pour vos objets.",b:"Nouveau",prix:null},
+    {id:4,n:"Meuble TV industriel",c:"Salon",a:"tv",d:"Caissons bois, structure acier. Longueur au choix.",b:"",prix:null},
+    {id:5,n:"Porte-revues",c:"Salon",a:"magazine",d:"Petit rangement en acier plié pour livres et revues.",b:"",prix:null},
+    {id:6,n:"Table à manger",c:"Salle à manger",a:"dining",d:"Pour 4 à 10 personnes, plateau bois massif.",b:"Best-seller",prix:null},
+    {id:7,n:"Chaise bistrot",c:"Salle à manger",a:"chair",d:"Structure soudée, assise et dossier en bois.",b:"",prix:null},
+    {id:8,n:"Banc acier et bois",c:"Salle à manger",a:"bench",d:"Avec la table à manger ou dans l'entrée.",b:"",prix:null},
+    {id:9,n:"Tabouret de bar",c:"Cuisine",a:"stool",d:"Hauteur 65 ou 75 cm, repose-pieds intégré.",b:"",prix:null},
+    {id:10,n:"Range-bouteilles",c:"Cuisine",a:"bottle",d:"Casier mural ou à poser, 12 à 24 bouteilles.",b:"",prix:null},
+    {id:11,n:"Console d'entrée",c:"Entrée",a:"console",d:"Fine et élégante, deux niveaux en bois.",b:"",prix:null},
+    {id:12,n:"Porte-manteau",c:"Entrée",a:"coat",d:"Sur pied, 6 crochets, base stable.",b:"",prix:null},
+    {id:13,n:"Miroir arche",c:"Entrée",a:"mirror",d:"Cadre acier fin, forme arrondie tendance.",b:"Tendance",prix:null},
+    {id:14,n:"Étagère industrielle",c:"Rangement",a:"shelf",d:"Montants acier, 3 ou 4 tablettes en bois.",b:"Best-seller",prix:null},
+    {id:15,n:"Étagère murale",c:"Rangement",a:"wallshelf",d:"Équerres acier, tablettes bois massif.",b:"",prix:null},
+    {id:16,n:"Porte-plantes",c:"Déco",a:"plant",d:"Support à pots sur deux niveaux, intérieur ou balcon.",b:"",prix:null},
+    {id:17,n:"Suspension cage",c:"Luminaires",a:"pendant",d:"Cage en acier pour cuisine ou salle à manger.",b:"",prix:null},
+    {id:18,n:"Lustre sphère",c:"Luminaires",a:"globe",d:"Cerclages en acier pour salons et halls.",b:"Tendance",prix:null},
+    {id:19,n:"Applique murale",c:"Luminaires",a:"sconce",d:"Bras acier et abat-jour noir mat.",b:"",prix:null},
+    {id:20,n:"Bureau industriel",c:"Bureau",a:"desk",d:"Plateau bois, caisson et piètement acier.",b:"",prix:null},
+    {id:25,n:"Chambre à coucher",c:"Chambre",a:"bed",img:"img/chambre-sq.jpg",d:"Armoire avec miroir sculpté, commode et chevets assortis.",b:"Nouveau",prix:null},
+    {id:26,n:"Armoire 3 portes",c:"Chambre",a:"shelf",img:"img/armoire-sq.jpg",d:"Grande armoire en bois sur pieds acier, aménagement intérieur au choix.",b:"",prix:null},
+    {id:27,n:"Dressing / bibliothèque",c:"Rangement",a:"shelf",img:"img/dressing-sq.jpg",d:"Niches et étagères sur mesure, du sol au plafond.",b:"Sur mesure",prix:null},
+    {id:21,n:"Lit en acier",c:"Chambre",a:"bed",d:"Cadre de lit soudé avec tête de lit, toutes tailles.",b:"",prix:null},
+    {id:22,n:"Porte blindée HPL",c:"Maison",a:"door",d:"Âme acier, finitions noyer, chêne, wengé ou anthracite.",b:"",prix:null},
+    {id:23,n:"Garde-corps",c:"Maison",a:"rail",d:"Pour escaliers, balcons et mezzanines. Main courante bois.",b:"",prix:null},
+    {id:24,n:"Portail battant",c:"Maison",a:"gate",d:"Sur mesure, acier traité contre la rouille.",b:"",prix:null}
+  ];
+  var P=FALLBACK;
+  var ROOMS=[
+    {c:"Salon",a:"coffee",img:"img/salon-sq.jpg",s:"Tables basses, meubles TV"},
+    {c:"Salle à manger",a:"dining",s:"Tables, chaises, bancs"},
+    {c:"Entrée",a:"mirror",s:"Consoles, miroirs, porte-manteaux"},
+    {c:"Luminaires",a:"globe",s:"Suspensions, lustres, appliques"},
+    {c:"Chambre",a:"bed",img:"img/chambre-sq.jpg",s:"Armoires, chambres, lits"}
+  ];
+  var CATS=[];
+  var cur="Tous",query="",cart={};
+
+  var $=function(id){return document.getElementById(id)};
+  var esc=function(t){return String(t).replace(/[&<>"]/g,function(m){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]})};
+  function tint(i){return tints[i%tints.length]}
+  function priceTxt(p){if(!p.prix)return 'Prix sur WhatsApp<small>fait à la commande</small>';var v=String(p.prix);return esc(/^[0-9.,\s]+$/.test(v)?v+' DT':v)+'<small>prix indicatif</small>'}
+  function pic(p){if(p.img)return '<img src="'+esc(p.img)+'" alt="'+esc(p.n)+'" loading="lazy"><span class="real">'+(p.reel===false?'Visuel non contractuel':'Photo réelle')+'</span>';return A[p.a]||'<img src="logo.png" alt="" style="width:46%;height:auto;object-fit:contain;opacity:.55">'}
+
+  $('rooms').innerHTML=ROOMS.map(function(r,i){return '<button class="room" type="button" data-c="'+r.c+'"><span class="pic" style="background:'+tint(i)+'">'+(r.img?'<img src="'+r.img+'" alt="" style="width:100%;height:100%;object-fit:cover">':A[r.a])+'</span><span class="t"><b>'+r.c+'</b><span>'+r.s+'</span></span></button>'}).join('');
+  $('rooms').addEventListener('click',function(e){var b=e.target.closest('.room');if(!b)return;cur=b.dataset.c;query="";$('q').value="";render();$('boutique').scrollIntoView({behavior:'smooth'})});
+
+  function buildFilters(){CATS=["Tous"].concat(P.map(function(p){return p.c}).filter(function(c,i,a){return c&&a.indexOf(c)===i}));$('filters').innerHTML=CATS.map(function(c){return '<button type="button" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join('')}
+  $('filters').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.c;render()});
+
+  function render(){
+    [].forEach.call($('filters').children,function(b){b.setAttribute('aria-pressed',b.dataset.c===cur?'true':'false')});
+    var q=query.toLowerCase();
+    var list=P.slice().sort(function(a,b){return (b.img?1:0)-(a.img?1:0)}).filter(function(p){return (cur==="Tous"||p.c===cur)&&(!q||(p.n+' '+p.d+' '+p.c).toLowerCase().indexOf(q)>-1)});
+    if(!list.length){$('grid').innerHTML='<div class="empty">Aucun article pour « '+esc(query)+' ». Nous le fabriquons peut-être sur mesure : <a href="#sur-mesure">demandez-nous</a>.</div>';return}
+    $('grid').innerHTML=list.map(function(p){
+      var inCart=!!cart[p.id];
+      return '<article class="card"><div class="pic" style="background:'+tint(p.id)+'">'+(p.b?'<span class="badge'+(p.b==="Nouveau"?' new':'')+'">'+esc(p.b)+'</span>':'')+pic(p)+'</div>'+
+        '<div class="body"><span class="cat">'+esc(p.c)+'</span><h3>'+esc(p.n)+'</h3><p>'+esc(p.d)+'</p>'+
+        '<div class="foot"><span class="price">'+priceTxt(p)+'</span><button type="button" class="add'+(inCart?' in':'')+'" data-id="'+p.id+'">'+(inCart?'✓ Ajouté':'+ Ajouter')+'</button></div></div></article>';
+    }).join('');
+  }
+  $('grid').addEventListener('click',function(e){var b=e.target.closest('.add');if(!b)return;var id=+b.dataset.id;cart[id]=(cart[id]||0)+1;update();render();toast(P.filter(function(p){return p.id===id})[0].n+' ajouté à votre commande')});
+
+  function update(){
+    var ids=Object.keys(cart),n=ids.reduce(function(s,k){return s+cart[k]},0);
+    $('count').textContent=n;
+    $('items').innerHTML=ids.length?ids.map(function(k){var p=P.filter(function(x){return x.id==k})[0];
+      return '<div class="item"><span class="th" style="background:'+tint(p.id)+'">'+(p.img?'<img src="'+esc(p.img)+'" alt="">':(A[p.a]||''))+'</span><div><b>'+esc(p.n)+'</b><span style="font-size:12.5px;color:var(--muted)">'+esc(p.c)+'</span></div><div class="qty"><button type="button" data-d="-1" data-id="'+p.id+'" aria-label="Retirer un">−</button><span>'+cart[k]+'</span><button type="button" data-d="1" data-id="'+p.id+'" aria-label="Ajouter un">+</button></div></div>'}).join('')
+      :'<p class="hint" style="padding:20px 0">Votre commande est vide. Ajoutez des articles depuis la boutique.</p>';
+  }
+  $('items').addEventListener('click',function(e){var b=e.target.closest('button[data-d]');if(!b)return;var id=b.dataset.id;cart[id]+=+b.dataset.d;if(cart[id]<=0)delete cart[id];update();render()});
+
+  var t;function toast(m){var el=$('toast');el.textContent=m;el.classList.add('on');clearTimeout(t);t=setTimeout(function(){el.classList.remove('on')},2200)}
+  function openC(){$('drawer').classList.add('on');$('bg').classList.add('on');$('drawer').setAttribute('aria-hidden','false');$('close-cart').focus()}
+  function closeC(){$('drawer').classList.remove('on');$('bg').classList.remove('on');$('drawer').setAttribute('aria-hidden','true')}
+  $('open-cart').onclick=openC;$('close-cart').onclick=closeC;$('bg').onclick=closeC;
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeC()});
+
+  $('send').onclick=function(){
+    var ids=Object.keys(cart);
+    if(!ids.length){$('hint').textContent="Ajoutez au moins un article avant d'envoyer.";return}
+    var lines=ids.map(function(k){var p=P.filter(function(x){return x.id==k})[0];return '- '+cart[k]+' x '+p.n});
+    var txt='Bonjour Metameca, je souhaite commander :\n'+lines.join('\n')+
+      ($('c-nom').value.trim()?'\nNom : '+$('c-nom').value.trim():'')+
+      ($('c-ville').value.trim()?'\nVille : '+$('c-ville').value.trim():'')+
+      ($('c-note').value.trim()?'\nPrécisions : '+$('c-note').value.trim():'');
+    var url='https://wa.me/21694703066?text='+encodeURIComponent(txt);
+    $('send-link').href=url;$('send-link').classList.add('on');
+    $('hint').textContent="Votre commande est prête. Si WhatsApp ne s'ouvre pas, touchez le lien ci-dessous.";
+    try{window.open(url,'_blank','noopener')}catch(err){}
+  };
+
+  $('search').addEventListener('submit',function(e){e.preventDefault();query=$('q').value.trim();cur="Tous";render();$('boutique').scrollIntoView({behavior:'smooth'})});
+  function fromCMS(d){return (d&&d.produits||[]).filter(function(x){return x&&x.titre&&x.visible!==false}).map(function(x,i){return {id:i+1,n:x.titre,c:x.categorie||'Maison',d:x.description||'',b:x.badge||'',prix:x.prix||null,img:x.image||'',a:x.dessin||'',reel:x.photo_reelle!==false}})}
+  fetch('data/produits.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){var l=fromCMS(d);if(l.length)P=l}).catch(function(){}).then(function(){buildFilters();update();render()});
+})();
+</script>
+</body>
+</html>

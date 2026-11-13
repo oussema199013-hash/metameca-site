@@ -1,0 +1,37 @@
+SITE METAMECA : MISE EN LIGNE ET GESTION
+========================================
+
+Contenu du dossier
+- index.html : le site
+- data/produits.json : la liste des articles (modifiée par l'espace Admin)
+- admin/ : votre espace Admin (adresse : votre-site/admin)
+- img/ : les photos ; img/uploads reçoit les photos ajoutées depuis l'Admin
+- logo.png : votre logo
+
+1. GITHUB (stockage du site)
+   - Créez un compte gratuit sur github.com
+   - Bouton « + » > « New repository », nom : metameca-site, Public, puis « Create repository »
+   - « uploading an existing file » : glissez TOUT le contenu de ce dossier (pas le dossier lui-même), puis « Commit changes »
+   - Ouvrez admin/config.yml sur GitHub, cliquez sur le crayon, remplacez VOTRE-NOM-GITHUB par votre nom d'utilisateur, puis « Commit changes »
+
+2. NETLIFY (mise en ligne gratuite)
+   - Créez un compte sur netlify.com avec « Sign up with GitHub »
+   - « Add new site » > « Import an existing project » > GitHub > metameca-site > « Deploy »
+   - « Site configuration » > « Change site name » : metameca (adresse : https://metameca.netlify.app)
+     Si ce nom est pris, choisissez-en un autre et corrigez site_url dans admin/config.yml
+
+3. CONNEXION DE L'ADMIN (une seule fois)
+   - Sur GitHub : photo de profil > Settings > Developer settings > OAuth Apps > New OAuth App
+       Application name : Metameca Admin
+       Homepage URL : https://metameca.netlify.app
+       Authorization callback URL : https://api.netlify.com/auth/done
+     Puis « Register application » et « Generate a new client secret ». Notez le Client ID et le Secret.
+   - Sur Netlify : votre site > Site configuration > Access & security > OAuth > « Install provider »
+       Provider : GitHub, collez le Client ID et le Secret
+
+4. UTILISATION AU QUOTIDIEN
+   - Allez sur https://metameca.netlify.app/admin et cliquez sur « Login with GitHub »
+   - Boutique > Mes articles : ajoutez, modifiez ou masquez un article (désignation, catégorie, photo, description, prix, étiquette)
+   - « Publish » : le site se met à jour en 1 à 2 minutes
+
+Téléphone et WhatsApp affichés : 94 703 066
