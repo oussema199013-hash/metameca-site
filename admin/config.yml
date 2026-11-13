@@ -1,0 +1,48 @@
+# Espace Admin Metameca
+# Dépôt GitHub : oussema199013-hash/metameca-site
+backend:
+  name: github
+  repo: oussema199013-hash/metameca-site
+  branch: main
+
+locale: fr
+site_url: https://mmi-27.netlify.app
+display_url: https://mmi-27.netlify.app
+logo_url: /logo.png
+
+media_folder: img/uploads
+public_folder: img/uploads
+
+collections:
+  - name: boutique
+    label: Boutique
+    editor:
+      preview: false
+    files:
+      - name: produits
+        label: Mes articles
+        file: data/produits.json
+        fields:
+          - name: produits
+            label: Articles
+            label_singular: Article
+            widget: list
+            summary: "{{fields.titre}} · {{fields.categorie}}"
+            add_to_top: true
+            fields:
+              - { name: titre, label: "Désignation", widget: string }
+              - name: categorie
+                label: "Catégorie"
+                widget: select
+                options: ["Salon", "Salle à manger", "Cuisine", "Entrée", "Chambre", "Bureau", "Rangement", "Luminaires", "Déco", "Maison"]
+              - { name: image, label: "Photo", widget: image, required: false, choose_url: false, hint: "Une photo carrée et nette de l'article, sur fond simple." }
+              - { name: photo_reelle, label: "Photo réelle de notre atelier ?", widget: boolean, default: true, hint: "Désactivez pour afficher « Visuel non contractuel »." }
+              - { name: description, label: "Description", widget: text, required: false, hint: "1 ou 2 phrases : matières, dimensions, finitions." }
+              - { name: prix, label: "Prix (DT)", widget: string, required: false, hint: "Ex. 350 ou « à partir de 250 ». Laissez vide pour « Prix sur WhatsApp »." }
+              - name: badge
+                label: "Étiquette"
+                widget: select
+                required: false
+                options: ["Nouveau", "Best-seller", "Tendance", "Promo", "Sur mesure"]
+              - { name: visible, label: "Afficher sur le site", widget: boolean, default: true }
+              - { name: dessin, label: "Dessin (si pas de photo)", widget: hidden, required: false }

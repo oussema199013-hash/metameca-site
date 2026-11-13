@@ -1,0 +1,301 @@
+{
+  "produits": [
+    {
+      "titre": "Table basse loft",
+      "categorie": "Salon",
+      "description": "Cadre acier noir, plateau et tablette effet bois. Notre modèle phare.",
+      "prix": "",
+      "badge": "Best-seller",
+      "image": "img/salon-sq.jpg",
+      "photo_reelle": true,
+      "dessin": "coffee",
+      "visible": true
+    },
+    {
+      "titre": "Chambre à coucher",
+      "categorie": "Chambre",
+      "description": "Armoire avec miroir sculpté, commode et chevets assortis.",
+      "prix": "",
+      "badge": "Nouveau",
+      "image": "img/chambre-sq.jpg",
+      "photo_reelle": true,
+      "dessin": "bed",
+      "visible": true
+    },
+    {
+      "titre": "Armoire 3 portes",
+      "categorie": "Chambre",
+      "description": "Grande armoire en bois sur pieds acier, aménagement intérieur au choix.",
+      "prix": "",
+      "badge": "",
+      "image": "img/armoire-sq.jpg",
+      "photo_reelle": true,
+      "dessin": "shelf",
+      "visible": true
+    },
+    {
+      "titre": "Dressing / bibliothèque",
+      "categorie": "Rangement",
+      "description": "Niches et étagères sur mesure, du sol au plafond.",
+      "prix": "",
+      "badge": "Sur mesure",
+      "image": "img/dressing-sq.jpg",
+      "photo_reelle": true,
+      "dessin": "shelf",
+      "visible": true
+    },
+    {
+      "titre": "Bout de canapé en C",
+      "categorie": "Salon",
+      "description": "Plateau ovale noyer, pied en C qui glisse sous le canapé.",
+      "prix": "",
+      "badge": "Nouveau",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "cside",
+      "visible": true
+    },
+    {
+      "titre": "Lampadaire étagère",
+      "categorie": "Luminaires",
+      "description": "Pied acier noir avec tablette en bois pour vos objets.",
+      "prix": "",
+      "badge": "Nouveau",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "floorlamp",
+      "visible": true
+    },
+    {
+      "titre": "Meuble TV industriel",
+      "categorie": "Salon",
+      "description": "Caissons bois, structure acier. Longueur au choix.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "tv",
+      "visible": true
+    },
+    {
+      "titre": "Porte-revues",
+      "categorie": "Salon",
+      "description": "Petit rangement en acier plié pour livres et revues.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "magazine",
+      "visible": true
+    },
+    {
+      "titre": "Table à manger",
+      "categorie": "Salle à manger",
+      "description": "Pour 4 à 10 personnes, plateau bois massif.",
+      "prix": "",
+      "badge": "Best-seller",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "dining",
+      "visible": true
+    },
+    {
+      "titre": "Chaise bistrot",
+      "categorie": "Salle à manger",
+      "description": "Structure soudée, assise et dossier en bois.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "chair",
+      "visible": true
+    },
+    {
+      "titre": "Banc acier et bois",
+      "categorie": "Salle à manger",
+      "description": "Avec la table à manger ou dans l'entrée.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "bench",
+      "visible": true
+    },
+    {
+      "titre": "Tabouret de bar",
+      "categorie": "Cuisine",
+      "description": "Hauteur 65 ou 75 cm, repose-pieds intégré.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "stool",
+      "visible": true
+    },
+    {
+      "titre": "Range-bouteilles",
+      "categorie": "Cuisine",
+      "description": "Casier mural ou à poser, 12 à 24 bouteilles.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "bottle",
+      "visible": true
+    },
+    {
+      "titre": "Console d'entrée",
+      "categorie": "Entrée",
+      "description": "Fine et élégante, deux niveaux en bois.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "console",
+      "visible": true
+    },
+    {
+      "titre": "Porte-manteau",
+      "categorie": "Entrée",
+      "description": "Sur pied, 6 crochets, base stable.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "coat",
+      "visible": true
+    },
+    {
+      "titre": "Miroir arche",
+      "categorie": "Entrée",
+      "description": "Cadre acier fin, forme arrondie tendance.",
+      "prix": "",
+      "badge": "Tendance",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "mirror",
+      "visible": true
+    },
+    {
+      "titre": "Étagère industrielle",
+      "categorie": "Rangement",
+      "description": "Montants acier, 3 ou 4 tablettes en bois.",
+      "prix": "",
+      "badge": "Best-seller",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "shelf",
+      "visible": true
+    },
+    {
+      "titre": "Étagère murale",
+      "categorie": "Rangement",
+      "description": "Équerres acier, tablettes bois massif.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "wallshelf",
+      "visible": true
+    },
+    {
+      "titre": "Porte-plantes",
+      "categorie": "Déco",
+      "description": "Support à pots sur deux niveaux, intérieur ou balcon.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "plant",
+      "visible": true
+    },
+    {
+      "titre": "Suspension cage",
+      "categorie": "Luminaires",
+      "description": "Cage en acier pour cuisine ou salle à manger.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "pendant",
+      "visible": true
+    },
+    {
+      "titre": "Lustre sphère",
+      "categorie": "Luminaires",
+      "description": "Cerclages en acier pour salons et halls.",
+      "prix": "",
+      "badge": "Tendance",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "globe",
+      "visible": true
+    },
+    {
+      "titre": "Applique murale",
+      "categorie": "Luminaires",
+      "description": "Bras acier et abat-jour noir mat.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "sconce",
+      "visible": true
+    },
+    {
+      "titre": "Bureau industriel",
+      "categorie": "Bureau",
+      "description": "Plateau bois, caisson et piètement acier.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "desk",
+      "visible": true
+    },
+    {
+      "titre": "Lit en acier",
+      "categorie": "Chambre",
+      "description": "Cadre de lit soudé avec tête de lit, toutes tailles.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "bed",
+      "visible": true
+    },
+    {
+      "titre": "Porte blindée HPL",
+      "categorie": "Maison",
+      "description": "Âme acier, finitions noyer, chêne, wengé ou anthracite.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "door",
+      "visible": true
+    },
+    {
+      "titre": "Garde-corps",
+      "categorie": "Maison",
+      "description": "Pour escaliers, balcons et mezzanines. Main courante bois.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "rail",
+      "visible": true
+    },
+    {
+      "titre": "Portail battant",
+      "categorie": "Maison",
+      "description": "Sur mesure, acier traité contre la rouille.",
+      "prix": "",
+      "badge": "",
+      "image": "",
+      "photo_reelle": true,
+      "dessin": "gate",
+      "visible": true
+    }
+  ]
+}
